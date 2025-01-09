@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Usuarios - Futurista</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Gestión de Usuarios</h1>
+        <button class="add-user-btn" onclick="openModal()">➕ Agregar Usuario</button>
+
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Teléfono</th>
+                    <th>User Name</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="user-list">
+                <!-- Los usuarios se insertarán aquí dinámicamente -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal para agregar/editar usuarios -->
+    <div id="userModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Agregar Usuario</h2>
+            <div style="width: 96%;">
+                <input type="hidden" id="user-id">
+                <input type="text" id="user-name" placeholder="Name">
+                <input type="email" id="user-email" placeholder="Email">
+                <input type="text" id="user-phone" placeholder="Teléfono">
+                <input type="text" id="user-username" placeholder="User name">
+                <input type="password" id="user-password" placeholder="Password">
+
+            </div>
+            <button onclick="saveUser()">Guardar</button>            
+        </div>
+    </div>
+    <button onclick="test()">test</button>            
+    <div id="test" style="background-color: aliceblue; color: black;"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>
