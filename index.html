@@ -1,31 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingreso</title>
+    <title>UplabsAi</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body style="margin: 0px; padding: 0px; overflow: hidden;">
-    <header style="background: #000; height: 45px; color: #fff; display: flex; align-items: center; padding-left: 85px;">
-        Ublabs Ai
-    </header>
-    <div style="background: #000000; width: 250px; height: 100%; position: fixed; top: 45px; left: 0px;">
-        <div style="margin: 0px; padding: 0px; margin-top: 30px; font-size: 20px;">Menu</div>
-        <ul style="margin: 0px; padding: 0px; margin-top: 20px; list-style: none;">
-            <li><a onclick="navigate('');" href="#">Home</a></li>
-            <li><a onclick="navigate('users');" href="#">Users</a></li>
-            <li><a onclick="navigate('test');" href="#">Test</a></li>
-            <li><a onclick="navigate('agents');" href="#">Agents</a></li>
-            <li><a onclick="navigate('https:/vapi.ai');" href="#">Vapi</a></li>
-            <li><a onclick="navigate('https:/www.make.com');" href="#">Make</a></li>
-            <li><a onclick="navigate('https:/n8n.io');" href="#">N8n</a></li>
-            <li><a onclick="navigate('https:/www.gohighlevel.com');" href="#">GohigLevel</a></li>
-        </ul>
-    </div>
-    <div style="margin-left: 250px;">
-        <iframe id="frameppl" style="width: 100%; height: calc(100vh - 45px);" src="users/"></iframe>
-    </div>
+<body>
+    <h1 style="display: flex; justify-content: center; margin-top: 20px;">Uplabs Ai</h1>
+    <div class="container" id="cardContainer"></div>
     <script src="index.js"></script>
 </body>
 </html>

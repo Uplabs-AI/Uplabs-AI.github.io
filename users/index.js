@@ -80,24 +80,17 @@ const saveUser=async()=> {
 }
 
 function updateTable() {
-    const tbody = document.getElementById("user-list");
-    tbody.innerHTML = "";
-    users.forEach(user => {
-        tbody.innerHTML += `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.phone}</td>
-                <td>${user.username}</td>
-                <td>
-                    <button class="action-btn delete-btn" onclick="go('${user.id}')">--></button>
-                    <button class="action-btn delete-btn" onclick="callUser('${user.id}', '${user.phone}')">📞</button>
-                    <button class="action-btn edit-btn" onclick="openModal('${user.id}')">✏️</button>
-                    <button class="action-btn delete-btn" onclick="deleteUser('${user.id}')">🗑️</button>
-                </td>
-            </tr>
-        `;
+    const container = document.getElementById("cardContainer");
+    users.forEach(obj => {
+        const card = document.createElement("div");
+        card.classList.add("card");
+        card.textContent = obj.name;
+        card.style.color = obj.color || "black";
+        card.onclick = () => {
+            alert(JSON.stringify(obj));
+        };
+        container.appendChild(card);
+        
     });
 }
 
