@@ -149,19 +149,7 @@ const testVapi=async()=>{
                     },
                     voice: {
                         provider: "11labs",
-                        voiceId: "3Fx71T889APcHRu4VtQf",
-                        backgroundSound: "Office",
-                        inputMinCharacters: 10,
-                        punctuationBoundaries: [".", "-"],
-                        fillerInjectionEnabled: true,
-                        backchannelingEnabled: true,
-                        settings: {
-                            stability: 0.7,
-                            claritySimilarity: 0.5,
-                            styleExaggeration: 0.2,
-                            optimizeStreamingLatency: 2,
-                            useSpeakerBoost: false
-                        }
+                        voiceId: "3Fx71T889APcHRu4VtQf"
                     }
                 },
                 phoneNumberId: "f5ab361a-3bf6-4780-8ee1-3e0eaf6cab4b",
