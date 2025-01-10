@@ -3,6 +3,7 @@ let state = {};
 const init = async () => {
     const params = new URLSearchParams(window.location.search);
     state.id_product = params.get('id');
+    getProduct();
     paint();
 };
 
@@ -108,7 +109,6 @@ const paint= async()=> {
         card.textContent = state.obj?.prompt;
         state.actions = "update";
     }
-    
     container.appendChild(card);
 };
 
@@ -119,6 +119,22 @@ const testWtspp=async()=>{
         return;
     }
 
+};
+const getProduct = async () => {
+    await conect();
+    
+    fetch(state.url+"/products/"+state.id_product, {
+        method:"GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${state.token}`
+        }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+        state.product = data.data;
+        document.getElementById("title").innerText = state.product?.name ? state.product?.name : "Prompt";
+    });
 };
 
 const testVapi=async()=>{
