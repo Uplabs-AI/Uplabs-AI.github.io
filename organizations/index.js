@@ -52,6 +52,7 @@ const paintProducts= async()=> {
     container.innerHTML="";
     products.forEach(product => {
         const card = document.createElement("div");
+        card.style.border = "1px solid black";
         card.classList.add("card");
         let html = `<div>${product.name}</div>`;
         if(product.type==="inbound"){
