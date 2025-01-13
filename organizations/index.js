@@ -2,7 +2,7 @@ var url;
 var TOKEN;
 let state = {};
 let editingUserId = null;
-let assistantId="13f69036-fee3-4e46-b3ef-007d3d439fa1";
+let assistantId="694f9f41-56c0-456c-b233-07fd719dbcbb";
 let vapiToken="291d8008-63de-4428-af4d-a0f9c4a9d125";
 
 const init=()=>{
@@ -85,7 +85,7 @@ const updateAssistant=(prompt)=>{
             body: JSON.stringify({
                 model: {
                     provider: "openai",
-                    model: "gpt-3.5-turbo",
+                    model: "gpt-4o-mini",
                     messages: [
                         {
                             role: "system",
@@ -122,13 +122,11 @@ const call=async()=>{
 
     let company_name =document.getElementById("company_name").value;
     let service =document.getElementById("service").value;
-    let language =document.getElementById("language").value;
     let agent_name =document.getElementById("agent_name").value;
 
     var prompt = state.product_selected.prompt
     .replaceAll("{{company_name}}", company_name)
     .replaceAll("{{service}}", service)
-    .replaceAll("{{language}}", language)
     .replaceAll("{{agent_name}}", agent_name);
 
     //console.log(state.product_selected?.prompt);
