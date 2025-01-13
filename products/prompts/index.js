@@ -4,7 +4,7 @@ const init = async () => {
     const params = new URLSearchParams(window.location.search);
     state.id_product = params.get('id');
     getProduct();
-    paint();
+    
 };
 
 const conect = async () => {
@@ -20,71 +20,25 @@ const conect = async () => {
     }
 };
 
-const getPrompts = async () => {
-    await conect();
-    return new Promise((resolve, reject) => {
-        fetch(state.url+"/prompts/id_product/"+state.id_product, {
-            method:"GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${state.token}`
-            }
-        })  
-        .then((response) => response.json())
-        .then((data) => {
-            resolve(data.data);
-        }).catch((error) => {
-            reject(error);
-        });
-    });
-};
 const save=()=>{
-    if(!state.obj) state.obj = {id_product:state.id_product};
-    state.obj.prompt = document.getElementById("ta-grande").value;
-    if(state.actions === "insert"){
-        savePrompt().then(() => {
-            alert("Prompt saved!");
-        }).catch((error) => {
-            alert("Error: "+error);
-        });
-    } else {
-        updatePrompt().then(() => {
-            alert("Prompt updated!");
-        }).catch((error) => {
-            alert("Error: "+error);
-        });
-    }
+    state.product.prompt = document.getElementById("ta-grande").value;
+    updatePrompt().then(() => {
+        alert("Prompt updated!");
+    }).catch((error) => {
+        alert("Error: "+error);
+    });
 
-};
-const savePrompt = async () => {
-    await conect();
-    return new Promise((resolve, reject) => {
-        fetch(state.url+"/prompts/", {
-            method:"POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${state.token}`
-            },
-            body: JSON.stringify(state.obj)
-        })  
-        .then((response) => response.json())
-        .then((data) => {
-            resolve(data.data);
-        }).catch((error) => {
-            reject(error);
-        });
-    })
 };
 const updatePrompt = async () => {
     await conect();
     return new Promise((resolve, reject) => {
-        fetch(state.url+"/prompts/"+state.obj.id, {
+        fetch(state.url+"/products/"+state.product.id, {
             method:"PUT",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${state.token}`
             },
-            body: JSON.stringify(state.obj)
+            body: JSON.stringify(state.product)
         })  
         .then((response) => response.json())
         .then((data) => {
@@ -96,19 +50,14 @@ const updatePrompt = async () => {
 };
 
 const paint= async()=> {
+    
+    document.getElementById("title").innerText = state.product?.name ? state.product?.name : "Prompt";
     const container = document.getElementById("cardContainer");
-    container.innerHTML = "<div style='display:flex; justify-content:center;'><img alt='' style='width:25px;' src='../../images/load.gif'></div>";
-    state.obj = await getPrompts();
-    container.innerHTML="";
+    
     const card = document.createElement("textarea");
     card.classList.add("ta-grande");
     card.id = "ta-grande";
-    
-    state.actions = "insert";    
-    if(state.obj?.prompt){
-        card.textContent = state.obj?.prompt;
-        state.actions = "update";
-    }
+    card.textContent = state.product?.prompt;
     container.appendChild(card);
 };
 
@@ -133,7 +82,7 @@ const getProduct = async () => {
     .then((response) => response.json())
     .then((data) => {
         state.product = data.data;
-        document.getElementById("title").innerText = state.product?.name ? state.product?.name : "Prompt";
+        paint();
     });
 };
 
@@ -152,7 +101,6 @@ const testVapi=async()=>{
         body: JSON.stringify(
             {
                 assistant:{
-                    firstMessage: "Hola como estas, estas ahi?",
                     model: {
                         provider: "openai",
                         model: "gpt-3.5-turbo",

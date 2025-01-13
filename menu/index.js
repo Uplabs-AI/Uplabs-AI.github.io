@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("cardContainer");
     const cardsData = [
-        {title:"Menu", url:"menu"},
+        {title:"Users", url:"../users"},
+        {title:"Organizations", url:"../organizations"},
+        {title:"Products", url:"../products"},
+        {title:"Options"},
+        {title:"Exit", url:"../", color:"#f00"},
     ];
 
     cardsData.forEach(obj => {

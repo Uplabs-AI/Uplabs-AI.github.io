@@ -44,7 +44,13 @@ const paintProducts= async()=> {
     products.forEach(product => {
         const card = document.createElement("div");
         card.classList.add("card");
-        card.textContent = product.name;
+        let html = `<div>${product.name}</div>`;
+        if(product.type==="inbound"){
+            html+=`<div style='color:blue;'>${product.type}</div>`;
+        }else{
+            html+=`<div style='color:green;'>${product.type}</div>`;
+        }
+        card.innerHTML = html;
         card.onclick = () => {
             window.location.href = "prompts/?id="+product.id;
         };
