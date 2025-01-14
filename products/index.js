@@ -51,6 +51,7 @@ const paintProducts= async()=> {
             html+=`<div style='color:green;'>${product.type}</div>`;
         }
         card.innerHTML = html;
+        card.style.border = "1px solid black";
         card.onclick = () => {
             window.location.href = "prompts/?id="+product.id;
         };

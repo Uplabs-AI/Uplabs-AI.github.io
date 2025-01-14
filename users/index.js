@@ -86,6 +86,7 @@ function updateTable() {
         card.classList.add("card");
         card.textContent = obj.name;
         card.style.color = obj.color || "black";
+        card.style.border = "1px solid black";
         card.onclick = () => {
             alert(JSON.stringify(obj));
         };
