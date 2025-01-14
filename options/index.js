@@ -12,7 +12,7 @@ const conect = async () => {
     if(!state.token) {
         const response = await fetch(state.url+"/login?user=admin&password=admin", {
             method:"POST"
-        });        
+        });
         const data = await response.json();
         state.token = data.access_token;
     }
