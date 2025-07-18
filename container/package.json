@@ -1,0 +1,49 @@
+{
+  "name": "uplabs-container",
+  "version": "1.0.0",
+  "description": "Contenedor principal para todos los proyectos UPLabs",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:all": "npm run build && npm run build:projects",
+    "build:projects": "npm run build:design && npm run build:leads && npm run build:nps && npm run build:whapy",
+    "build:design": "cd ../projects/design && npm run build",
+    "build:leads": "cd ../projects/leads && npm run build",
+    "build:nps": "cd ../projects/nps && npm run build",
+    "build:whapy": "cd ../projects/whapy && npm run build",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:projects\"",
+    "dev:projects": "concurrently \"npm run dev:design\" \"npm run dev:leads\" \"npm run dev:nps\" \"npm run dev:whapy\"",
+    "dev:design": "cd ../projects/design && npm run dev",
+    "dev:leads": "cd ../projects/leads && npm run dev",
+    "dev:nps": "cd ../projects/nps && npm run dev",
+    "dev:whapy": "cd ../projects/whapy && npm run dev"
+  },
+  "dependencies": {
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "lucide-react": "^0.294.0",
+    "tailwind-merge": "^2.0.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "concurrently": "^8.2.2",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  }
+} 

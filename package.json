@@ -1,0 +1,31 @@
+{
+  "name": "uplabs-unified",
+  "version": "1.0.0",
+  "description": "Plataforma unificada UPLabs - Todos los proyectos en un solo lugar",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev:container\" \"npm run dev:projects\"",
+    "dev:container": "npm run --prefix container dev",
+    "dev:projects": "concurrently \"npm run dev:design\" \"npm run dev:leads\" \"npm run dev:nps\" \"npm run dev:whapy\"",
+    "dev:design": "npm run --prefix projects/design dev",
+    "dev:leads": "npm run --prefix projects/leads dev",
+    "dev:nps": "npm run --prefix projects/nps dev",
+    "dev:whapy": "npm run --prefix projects/whapy dev",
+    "build": "npm run build:container && npm run build:projects",
+    "build:container": "npm run --prefix container build",
+    "build:projects": "concurrently \"npm run build:design\" \"npm run build:leads\" \"npm run build:nps\" \"npm run build:whapy\"",
+    "build:design": "npm run --prefix projects/design build",
+    "build:leads": "npm run --prefix projects/leads build",
+    "build:nps": "npm run --prefix projects/nps build",
+    "build:whapy": "npm run --prefix projects/whapy build",
+    "start": "npm run --prefix container start",
+    "install:all": "npm install && npm run --prefix container install && npm run --prefix projects/design install && npm run --prefix projects/leads install && npm run --prefix projects/nps install && npm run --prefix projects/whapy install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "workspaces": [
+    "container",
+    "projects/*"
+  ]
+} 
